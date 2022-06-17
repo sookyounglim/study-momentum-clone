@@ -6,18 +6,16 @@ const toDoList = document.querySelector(".todo-list-display");
 
 let toDoStorage = [];
 
-function saveToDo() {
+function saveToDo(toDoStorage) {
 	window.localStorage.setItem(TODO_KEY, JSON.stringify(toDoStorage));
 }
 
 function handleBtnDelete(event) {
-	const deleteTargetLi = event.target.parentNode;
-	const deleteTargetId = deleteTargetLi.id;
+	const deleteLi = event.target.parentNode;
 
-	const deleteIdx = toDoStorage.find((currentValue, index, toDoStorage) => (currentValue.id === deleteTargetId ? index : -1));
-	toDoStorage.splice(deleteIdx, 1);
-	saveToDo();
-	deleteTargetLi.remove();
+	toDoStorage = toDoStorage.filter((currentValue) => currentValue.id !== parseInt(deleteLi.id));
+	saveToDo(toDoStorage);
+	deleteLi.remove();
 }
 
 function displayToDo(newToDoObj) {
@@ -42,14 +40,14 @@ function handleToDoSubmit(event) {
 
 	const newToDo = toDoText.value;
 	const newToDoObj = {
-		id: new Date(),
+		id: Date.now(),
 		text: newToDo
 	};
 	toDoStorage.push(newToDoObj);
 
 	toDoText.value = "";
 	displayToDo(newToDoObj);
-	saveToDo();
+	saveToDo(toDoStorage);
 }
 
 const savedToDo = localStorage.getItem(TODO_KEY);
@@ -57,4 +55,5 @@ if (savedToDo) {
 	toDoStorage = JSON.parse(savedToDo);
 	toDoStorage.forEach(displayToDo);
 }
+
 toDoForm.addEventListener("submit", handleToDoSubmit);
