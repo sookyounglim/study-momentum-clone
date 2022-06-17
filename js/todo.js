@@ -12,14 +12,20 @@ function saveToDo() {
 
 function handleBtnDelete(event) {
 	const deleteTargetLi = event.target.parentNode;
+	const deleteTargetId = deleteTargetLi.id;
+
+	const deleteIdx = toDoStorage.find((currentValue, index, toDoStorage) => (currentValue.id === deleteTargetId ? index : -1));
+	toDoStorage.splice(deleteIdx, 1);
+	saveToDo();
 	deleteTargetLi.remove();
 }
 
-function displayToDo(newToDo) {
+function displayToDo(newToDoObj) {
 	const newLi = document.createElement("li");
 	const newSpan = document.createElement("span");
 
-	newSpan.innerText = newToDo;
+	newLi.id = newToDoObj.id;
+	newSpan.innerText = newToDoObj.text;
 
 	const newButton = document.createElement("button");
 	newButton.innerText = "❌";
@@ -35,10 +41,14 @@ function handleToDoSubmit(event) {
 	event.preventDefault();
 
 	const newToDo = toDoText.value;
-	toDoStorage.push(newToDo);
+	const newToDoObj = {
+		id: new Date(),
+		text: newToDo
+	};
+	toDoStorage.push(newToDoObj);
 
 	toDoText.value = "";
-	displayToDo(newToDo);
+	displayToDo(newToDoObj);
 	saveToDo();
 }
 
