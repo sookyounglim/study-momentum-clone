@@ -7,7 +7,7 @@ function onGeoSuccess(location) {
 		const city = document.querySelector(".weather span:first-child");
 		const weather = document.querySelector(".weather span:last-child");
 		
-		city.innerText = `${response.name} /`;
+		city.innerText = response.name;
 		weather.innerText = response.weather[0].main;
 	});
 }
