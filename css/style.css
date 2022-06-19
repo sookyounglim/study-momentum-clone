@@ -2,33 +2,60 @@
 	display: none;
 }
 
+body {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
 body > * {
 	position: relative;
+	top: 0;
 	z-index: 99;
 	font-family: 'Oxygen', sans-serif;
 }
 
 .background {
 	position: absolute;
+	width: 100%;
+	min-height: 100%;
 	top: 0;
 	left: 0;
 	z-index: 1;
 }
 
-body {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
+.login-form > * {
+	width: 30vw;
+	font-size: 2.5rem;
+	color: white;
+	text-align: center;
 }
 
 .login-form > *:first-child {
 	font-size: 2.5rem;
-	color: white;
 	display: block;
+}
+
+.login-form > input {
+	border: none;
+	height: 50px;
+	border-bottom: 3px solid goldenrod;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.login-form > input:focus {
+	outline: none;
 }
 
 .login-form > button {
 	display: none;
+}
+
+body > *:not(:first-child) {
+	color: white;
 }
