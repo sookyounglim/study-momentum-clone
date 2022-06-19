@@ -5,7 +5,6 @@ function displayGreetings(username) {
 	const greeting = document.querySelector(".greeting");
 
 	greeting.innerText = `Hello! My friend, ${username}`;
-	console.log(MYAPP.initialHiddenClasses);
 	MYAPP.initialHiddenClasses.forEach((currentValue) => (currentValue.classList.remove(HIDDEN_CLASSNAME)));
 	MYAPP.loginForm.classList.add(HIDDEN_CLASSNAME);
 }
