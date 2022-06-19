@@ -3,12 +3,17 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="reset.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<title>Momentum App Clone</title>
 	</head>
 	<body>
 		<form class="login-form">
-			<input required type="text" maxlength="15" placeholder="what is your name" />
+			<label for="login-name">What is your name?</label>
+			<input required type="text" maxlength="15" id="login-name" />
 			<button>Log In</button>
 		</form>
 		<h2 class="clock hidden"></h2>

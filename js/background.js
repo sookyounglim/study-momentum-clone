@@ -7,5 +7,6 @@ MYAPP.images = [`${MYAPP.imgPath}/pexels-pixabay-33109.jpg`, `${MYAPP.imgPath}/p
 
 	backgroundImg.src = chosenImage;
 	backgroundImg.alt = "랜덤한 배경화면";
+	backgroundImg.className = "background";
 	document.body.appendChild(backgroundImg);
 }
