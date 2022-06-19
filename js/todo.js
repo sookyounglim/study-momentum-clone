@@ -1,10 +1,6 @@
-const TODO_KEY = "todo-list";
-
-const toDoForm = document.querySelector(".todo-form");
-const toDoText = toDoForm.querySelector("input");
-const toDoList = document.querySelector(".todo-list-display");
-
-let toDoStorage = [];
+MYAPP.toDoForm = document.querySelector(".todo-form");
+MYAPP.toDoList = document.querySelector(".todo-list-display");
+MYAPP.toDoStorage = [];
 
 function saveToDo(toDoStorage) {
 	window.localStorage.setItem(TODO_KEY, JSON.stringify(toDoStorage));
@@ -13,8 +9,8 @@ function saveToDo(toDoStorage) {
 function handleBtnDelete(event) {
 	const deleteLi = event.target.parentNode;
 
-	toDoStorage = toDoStorage.filter((currentValue) => currentValue.id !== parseInt(deleteLi.id));
-	saveToDo(toDoStorage);
+	MYAPP.toDoStorage = MYAPP.toDoStorage.filter((currentValue) => currentValue.id !== parseInt(deleteLi.id));
+	saveToDo(MYAPP.toDoStorage);
 	deleteLi.remove();
 }
 
@@ -30,7 +26,7 @@ function displayToDo(newToDoObj) {
 
 	newLi.appendChild(newSpan);
 	newLi.appendChild(newButton);
-	toDoList.appendChild(newLi);
+	MYAPP.toDoList.appendChild(newLi);
 
 	newButton.addEventListener("click", handleBtnDelete);
 }
@@ -38,22 +34,25 @@ function displayToDo(newToDoObj) {
 function handleToDoSubmit(event) {
 	event.preventDefault();
 
+	const toDoText = MYAPP.toDoForm.querySelector("input");
 	const newToDo = toDoText.value;
 	const newToDoObj = {
 		id: Date.now(),
 		text: newToDo
 	};
-	toDoStorage.push(newToDoObj);
+	MYAPP.toDoStorage.push(newToDoObj);
 
 	toDoText.value = "";
 	displayToDo(newToDoObj);
-	saveToDo(toDoStorage);
+	saveToDo(MYAPP.toDoStorage);
 }
 
-const savedToDo = localStorage.getItem(TODO_KEY);
-if (savedToDo) {
-	toDoStorage = JSON.parse(savedToDo);
-	toDoStorage.forEach(displayToDo);
-}
+{
+	const savedToDo = localStorage.getItem(TODO_KEY);
 
-toDoForm.addEventListener("submit", handleToDoSubmit);
+	if (savedToDo) {
+		MYAPP.toDoStorage = JSON.parse(savedToDo);
+		MYAPP.toDoStorage.forEach(displayToDo);
+	}
+	MYAPP.toDoForm.addEventListener("submit", handleToDoSubmit);
+}

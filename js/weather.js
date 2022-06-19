@@ -6,10 +6,8 @@ function onGeoSuccess(location) {
 	fetch(url).then((response) => response.json()).then((response) => {
 		const city = document.querySelector(".weather span:first-child");
 		const weather = document.querySelector(".weather span:last-child");
-
-		console.log(response);
 		
-		city.innerText = response.name;
+		city.innerText = `${response.name} /`;
 		weather.innerText = response.weather[0].main;
 	});
 }
@@ -18,5 +16,7 @@ function onGeoError() {
 	console.log("위치를 확인할 수 없습니다. 접근 권한 등을 확인해주세요.");
 }
 
-navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
-
+{
+	const weatherDiv = document.querySelector(".weather");
+	navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);
+}

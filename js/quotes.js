@@ -1,4 +1,4 @@
-const quotes = [
+MYAPP.quotes = [
 	{
 		quote: '꿈을 이루고자 하는 용기만 있다면 모든 꿈을 이룰 수 있다.',
 		author: '월트 디즈니'
@@ -49,9 +49,13 @@ const quotes = [
 	}
 ]
 
-const quoteElement = document.querySelector(".quote-div span:first-child");
-const authorElement = document.querySelector(".quote-div span:last-child");
-const randomNum = Math.floor(Math.random() * (quotes.length));
+{
+	const quoteDiv = document.querySelector(".quote-div");
 
-quoteElement.innerText = quotes[randomNum].quote;
-authorElement.innerText = quotes[randomNum].author;
+	const quoteElement = document.querySelector(".quote-div span:first-child");
+	const authorElement = document.querySelector(".quote-div span:last-child");
+	const randomNum = Math.floor(Math.random() * (MYAPP.quotes.length));
+
+	quoteElement.innerText = MYAPP.quotes[randomNum].quote;
+	authorElement.innerText = MYAPP.quotes[randomNum].author;
+}
