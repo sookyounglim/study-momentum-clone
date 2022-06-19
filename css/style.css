@@ -1,0 +1,159 @@
+.hidden {
+	display: none;
+}
+
+body {
+	/* min-width: 1200px; */
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+body > * {
+	position: relative;
+	z-index: 99;
+	font-family: 'Oxygen', sans-serif;
+}
+
+.background {
+	position: absolute;
+	width: 100%;
+	min-height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.login-form > * {
+	width: 30vw;
+	font-size: 2.5rem;
+	color: white;
+	text-align: center;
+}
+
+.login-form > *:first-child {
+	font-size: 2.5rem;
+	display: block;
+	margin: 0px 0 20px 0;
+}
+
+.login-form > input {
+	border: none;
+	height: 50px;
+	border-bottom: 3px solid white;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.login-form > input:focus, .todo-form > input:focus {
+	outline: none;
+	border-bottom: 3px solid rgb(244, 239, 94);
+}
+
+
+.login-form > button {
+	display: none;
+}
+
+body > *:not(:first-child) {
+	color: white;
+}
+
+.clock {
+	font-size: 6.5rem;
+	margin: 0 0;
+
+}
+
+.greeting {
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin: 15px 0;
+}
+
+.todo-form > input {
+	color : rgb(244, 239, 94);
+	font-size: 1.5rem;
+	border: none;
+	border-bottom: 3px solid rgb(245, 244, 196);
+	background-color: rgb(255, 255, 255, 0);
+	width: 30vw;
+	height: 40px;
+	min-width: 400px;
+	margin : 30px 0 10px 0;
+}
+
+.todo-form > input::placeholder {
+	text-align: center;
+	color: rgb(245, 244, 196);
+	font-size: 1.5rem;
+	font-size: bold;
+}
+
+.todo-list-display {
+	position: absolute;
+	right: 0;
+	bottom: 32px;
+	z-index: 99;
+	font-size: 1rem;
+	min-width: 100px;
+	width: 20vw;
+	max-height: 100vh;
+	overflow-y: auto;
+	background-color: rgb(0, 0, 0, 0.7);
+}
+
+.todo-list-display > li {
+	display: flex;
+	flex-direction: row;
+	margin: 10px;
+	word-break: break-all;
+	
+}
+
+.todo-list-display > li > span {
+	line-height: 1.3rem;
+	flex-grow: 1;
+}
+
+.todo-list-display button {
+	padding: 1px 2px;
+	font-size: 0.9rem;
+	width: 14px;
+	margin: 0 5px;
+	color: rgb(245, 244, 196, 0.4);
+	background: none;
+	border: none;
+}
+
+.quote-div {
+	position: absolute;
+	bottom: 0;
+}
+
+.quote-div > span, .weather > span {
+	display: block;
+	text-align: center;
+	font-size: 0.9rem;
+	line-height: 1.4rem;
+}
+
+.quote-div {
+	margin: 10px 0;
+}
+
+.weather {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 98;
+	font-size: 1.1rem;
+}
+
+.weather > span {
+	margin: 10px 10px;
+}
