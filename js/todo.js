@@ -22,7 +22,7 @@ function displayToDo(newToDoObj) {
 	newSpan.innerText = newToDoObj.text;
 
 	const newButton = document.createElement("button");
-	newButton.innerText = "❌";
+	newButton.innerText = "X";
 
 	newLi.appendChild(newSpan);
 	newLi.appendChild(newButton);
